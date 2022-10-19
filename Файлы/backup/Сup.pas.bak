@@ -1,0 +1,47 @@
+unit __up;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Graphics, Figure;
+
+Type
+  TCup = Class
+    private
+      cols: word; //число кубиков по горизонтали
+      rows: word; //число кубиков по вертикали
+      cubes: array of array of byte; //содержимое стакана
+    public
+      constructor Create(color: TColor; point: TPoint; size: word);
+  end;
+
+implementation
+
+constructor TFigI.Create(color: TColor; point: TPoint; size: word);
+begin
+  inherited Create(color, point, size);
+  SetLength(cubes_, 2);
+  {
+    [][][][]
+  }
+  SetLength(cubes_[0], 1, 4);
+  cubes_[0][0][0] := 1;
+  cubes_[0][0][1] := 1;
+  cubes_[0][0][2] := 1;
+  cubes_[0][0][3] := 1;
+  {
+    []
+    []
+    []
+    []
+  }
+  SetLength(cubes_[1], 4, 1);
+  cubes_[1][0][0] := 1;
+  cubes_[1][1][0] := 1;
+  cubes_[1][2][0] := 1;
+  cubes_[1][3][0] := 1;
+end;
+
+end.

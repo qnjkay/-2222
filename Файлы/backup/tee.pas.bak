@@ -1,0 +1,58 @@
+unit Tee;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Graphics, Figure;
+
+Type
+  TTee = Class(TFigure)
+    public
+      constructor Create(color: TColor; point: TPoint; size: word);
+  end;
+
+implementation
+
+constructor TTee.Create(color: TColor; point: TPoint; size: word);
+begin
+  inherited Create(color, point, size);
+  SetLength(cubes_, 4);
+  {
+      []
+    [][][]
+  }
+  SetLength(cubes_[0], 2, 3);
+  cubes_[0][0][0] := 1; cubes_[0][1][0] := 0;
+  cubes_[0][0][1] := 1; cubes_[0][1][1] := 1;
+  cubes_[0][0][2] := 1; cubes_[0][1][2] := 0;
+  {
+      []
+    [][]
+      []
+  }
+  SetLength(cubes_[1], 3, 2);
+  cubes_[1][0][0] := 0; cubes_[1][0][1] := 1;
+  cubes_[1][1][0] := 1; cubes_[1][1][1] := 1;
+  cubes_[1][2][0] := 0; cubes_[1][2][1] := 1;
+  {
+    [][][]
+      []
+  }
+  SetLength(cubes_[2], 2, 3);
+  cubes_[2][0][0] := 0; cubes_[2][1][0] := 1;
+  cubes_[2][0][1] := 1; cubes_[2][1][1] := 1;
+  cubes_[2][0][2] := 0; cubes_[2][1][2] := 1;
+  {
+    []
+    [][]
+    []
+  }
+  SetLength(cubes_[1], 3, 2);
+  cubes_[3][0][0] := 1; cubes_[3][0][1] := 0;
+  cubes_[3][1][0] := 1; cubes_[3][1][1] := 1;
+  cubes_[3][2][0] := 1; cubes_[3][2][1] := 0;
+end;
+
+end.
